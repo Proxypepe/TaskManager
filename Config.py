@@ -19,4 +19,4 @@ PADDING_X = 10
 PADDING_Y = 10
 
 # Files
-FILE_PATH = "MainTasks.json"
+FILE_PATH = "WhatToLearn.json"

@@ -17,9 +17,11 @@ class App:
         self.main_menu = Menu(self.root)
 
     def __del__(self):
-        for x, y in zip(self.__current_list, self.__current_checkBoxes):
-            x["Status"] = y.get_state()
-        self.__parser.back_up()
+        self.__save_tasks()
+
+    # TODO finish up func
+    def __init_path(self):
+        pass
 
     def __make_menu(self) -> None:
         self.root.config(menu=self.main_menu)
@@ -51,6 +53,8 @@ class App:
         self.__current_list.clear()
 
     def __save_tasks(self) -> None:
+        for x, y in zip(self.__current_list, self.__current_checkBoxes):
+            x["Status"] = y.get_state()
         self.__parser.back_up()
 
     def __open_file(self) -> None:
@@ -76,6 +80,7 @@ class App:
                                activebackground=Config.BACKGROUND_FRAME, width=20, offvalue=done,
                                padx=Config.PADDING_X, pady=Config.PADDING_Y, fg=Config.FONT_COLOR,
                                wraplength=160, font=Config.FONT_SIZE)
+                box.var.set(done)
                 self.__current_checkBoxes.append(box)
                 done = 0
                 self.frame.update()
